@@ -1,0 +1,64 @@
+#formulario{
+    margin-top: 20px;
+    width: 700px; 
+   
+    box-shadow: 3px 5px 4px 6px black;
+}
+#principal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#principal table{
+    min-width: 900px;
+    box-shadow: 3px 5px 4px 6px black;
+}
+table button {
+    float: right;
+    margin-left: 5px;
+}
+.form-select{
+    width: 100%;
+}
+#autorSelect{
+    height: min-content 30px;
+}
+svg{
+    fill: white;
+}
+#principalAutor{
+    display: none;
+}
+h1,h2,h3{
+    text-align: center;
+}
+p span{
+    font-weight: bolder;
+}
+#sinContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#sinopseD{
+    width: 400px;
+    text-align: center;
+}
+#buttonsP{
+    width: 360px;
+    display: flex;
+    justify-content: space-between;
+}
+#buttons div {
+    float: left;
+}
+#esq button{
+    display: block;
+    float: right;
+    width: 175px;
+}
+#dir button{
+    display: block;
+    float: left;
+    width: 175px;
+}
