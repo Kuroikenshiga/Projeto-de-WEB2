@@ -1,31 +1,10 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 15.2
--- Dumped by pg_dump version 15.2
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
 
 --
 -- Name: autores; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.autores (
-    id_autor integer NOT NULL,
+    id_autor serial NOT NULL ,
     nome character varying(45) NOT NULL,
     biografia character varying(500) NOT NULL,
     contato character varying(40) NOT NULL
@@ -38,30 +17,13 @@ ALTER TABLE public.autores OWNER TO postgres;
 -- Name: autores_id_autor_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.autores_id_autor_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.autores_id_autor_seq OWNER TO postgres;
-
---
--- Name: autores_id_autor_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.autores_id_autor_seq OWNED BY public.autores.id_autor;
-
 
 --
 -- Name: autores_livros; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.autores_livros (
-    id_autores_livro integer NOT NULL,
+    id_autores_livro serial NOT NULL,
     id_autor_fk integer NOT NULL,
     id_livro_fk integer NOT NULL
 );
@@ -73,30 +35,12 @@ ALTER TABLE public.autores_livros OWNER TO postgres;
 -- Name: autores_livros_id_autores_livro_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.autores_livros_id_autores_livro_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.autores_livros_id_autores_livro_seq OWNER TO postgres;
-
---
--- Name: autores_livros_id_autores_livro_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.autores_livros_id_autores_livro_seq OWNED BY public.autores_livros.id_autores_livro;
-
-
 --
 -- Name: genero_literario; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.genero_literario (
-    id_genero_literario integer NOT NULL,
+    id_genero_literario serial NOT NULL,
     id_genero_fk integer NOT NULL,
     id_autor_fk integer NOT NULL
 );
@@ -108,30 +52,13 @@ ALTER TABLE public.genero_literario OWNER TO postgres;
 -- Name: genero_literario_id_genero_literario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.genero_literario_id_genero_literario_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.genero_literario_id_genero_literario_seq OWNER TO postgres;
-
---
--- Name: genero_literario_id_genero_literario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.genero_literario_id_genero_literario_seq OWNED BY public.genero_literario.id_genero_literario;
-
 
 --
 -- Name: generos; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.generos (
-    id_genero integer NOT NULL,
+    id_genero serial NOT NULL,
     genero character varying(30) NOT NULL
 );
 
@@ -142,30 +69,13 @@ ALTER TABLE public.generos OWNER TO postgres;
 -- Name: generos_id_genero_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.generos_id_genero_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.generos_id_genero_seq OWNER TO postgres;
-
---
--- Name: generos_id_genero_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.generos_id_genero_seq OWNED BY public.generos.id_genero;
-
 
 --
 -- Name: livro_generos; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.livro_generos (
-    id_genero_livro integer NOT NULL,
+    id_genero_livro serial NOT NULL,
     id_livro_fk integer NOT NULL,
     id_genero_fk integer NOT NULL
 );
@@ -175,24 +85,6 @@ ALTER TABLE public.livro_generos OWNER TO postgres;
 
 --
 -- Name: livro_generos_id_genero_livro_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.livro_generos_id_genero_livro_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.livro_generos_id_genero_livro_seq OWNER TO postgres;
-
---
--- Name: livro_generos_id_genero_livro_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.livro_generos_id_genero_livro_seq OWNED BY public.livro_generos.id_genero_livro;
 
 
 --
@@ -200,7 +92,7 @@ ALTER SEQUENCE public.livro_generos_id_genero_livro_seq OWNED BY public.livro_ge
 --
 
 CREATE TABLE public.livros (
-    id_livro integer NOT NULL,
+    id_livro serial NOT NULL,
     titulo character varying(45) NOT NULL,
     isbn character varying(15) NOT NULL,
     data_publicacao date NOT NULL,
@@ -217,22 +109,6 @@ ALTER TABLE public.livros OWNER TO postgres;
 -- Name: livros_id_livro_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.livros_id_livro_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.livros_id_livro_seq OWNER TO postgres;
-
---
--- Name: livros_id_livro_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.livros_id_livro_seq OWNED BY public.livros.id_livro;
 
 
 --
